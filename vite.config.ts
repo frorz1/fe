@@ -28,11 +28,11 @@ export default defineConfig(({ command }) => {
       },
       proxy: {
         '/api': {
-          target: 'https://sv.xxx/',
+          target: 'https://xxx/',
           changeOrigin: true,
         },
-        '/supply/api': {
-          target: 'https://sv.xxx/',
+        '/xxx': {
+          target: 'https://xxx/',
           changeOrigin: true,
         },
       },
