@@ -1,0 +1,10 @@
+node_modules/*
+scripts/*
+.husky/*
+**/node_modules
+**/build
+**/dist
+**/es
+**/lib
+**/config
+**/test

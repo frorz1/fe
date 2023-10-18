@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2016.Array.Include",
+      "ESNext",
+      "ScriptHost"
+    ],
+    "strict": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "isolatedModules": false,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "noEmitOnError": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "@creator/*": ["./.creator/*"]
+    },
+  },
+  "include": ["./src", "./.creator"],
+  "exclude": ["node_modules"]
+}

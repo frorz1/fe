@@ -1,0 +1,77 @@
+{
+  "name": "h5",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite",
+    "dev:force": "FORCE_FETCH_I18N=true vite",
+    "build": "rm -rf dist && vite build",
+    "report": "rm -rf dist && REPORT=true vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf node_modules **/*/node_modules",
+    "lint": "stylelint ./**/*.{css,less} & eslint ./",
+    "lint:fix": "stylelint ./**/*.{css,less} --fix & eslint ./ --fix",
+    "lint:js": "eslint ./ --fix",
+    "lint:style": "stylelint ./**/*.{css,less} --fix",
+    "ts-check": "node scripts/check-ts.js",
+    "check-local": "node scripts/check-local.js",
+    "check-mr": "node scripts/check-server.js",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@frorz/common-eslint-config": "^0.1.1",
+    "@frorz/eslint-config": "^0.1.1",
+    "@types/node": "^17.0.23",
+    "@types/react": "^17.0.43",
+    "@types/react-dom": "^17.0.14",
+    "@vitejs/plugin-legacy": "^4.1.1",
+    "@vitejs/plugin-react": "^4.1.0",
+    "autoprefixer": "^10.4.16",
+    "chalk": "4.1.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^7.0.4",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "lint-staged": "^12.3.7",
+    "postcss": "^8.4.12",
+    "postcss-less": "^6.0.0",
+    "postcss-pxtorem": "^6.0.0",
+    "prettier": "^2.6.1",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "stylelint": "^14.6.1",
+    "stylelint-config-css-modules": "^3.0.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-less": "^1.0.5",
+    "stylelint-order": "^5.0.0",
+    "stylelint-prettier": "^2.0.0",
+    "typescript": "^4.6.3",
+    "vite": "^4.4.11"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "pnpm ts-check",
+      "pnpm lint:js",
+      "git add ."
+    ],
+    "**/*.{css,less}": [
+      "pnpm lint:style",
+      "git add ."
+    ]
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "zustand": "^4.4.3"
+  },
+  "resolutions": {}
+}

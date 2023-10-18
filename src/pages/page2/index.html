@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  </head>
+  <body>
+    <script>
+      (function () {
+        function setRfs() {
+          var $dom = document.createElement('div')
+          $dom.style = 'font-size:12px;'
+          document.body.appendChild($dom)
+          // 计算出放大后的字体
+          var scaledFontSize = parseInt(window.getComputedStyle($dom, null).getPropertyValue('font-size'))
+          document.body.removeChild($dom);
+          // 计算原字体和放大后字体的比例
+          var scaleFactor = 12 / scaledFontSize
+          console.log('scale: ', scaleFactor, scaledFontSize)
+
+          var designWidth = 375
+          var rem2px = 100
+          var fontSize = Math.max(window.innerWidth / designWidth * rem2px, document.documentElement.clientWidth / designWidth * rem2px, 42.67)
+          document.documentElement.style.fontSize = fontSize + "px"
+          console.log('origin fontsize: ', fontSize)
+        }
+        setRfs()
+        var tid
+        window.addEventListener('resize', function () {
+          clearTimeout(tid)
+          tid = setTimeout(setRfs, 100)
+        }, false)
+
+        if (/(iPhone|iPod|iPad)/i.test(window.navigator.userAgent)) {
+          // Get iOS major version
+          var iosVersion = parseInt((window.navigator.userAgent).match(/OS (\d+)_(\d+)_?(\d+)? like Mac OS X/i)[1]);
+          // Detect if device is running >iOS 11
+          // iOS 11's UIWebView and WKWebView changes the viewport behaviour to render viewport without the status bar. Need to override with "viewport-fit: cover" to include the status bar.
+          if (iosVersion >= 11) {
+            document.querySelector('meta[name="viewport"]').content += ', viewport-fit=cover';
+          }
+        }
+      })()
+    </script>
+    <div id="root">
+    </div>
+    <script type="module" src="/page2/main.tsx"></script>
+  </body>
+</html>
