@@ -2,7 +2,7 @@
   "name": "h5",
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
+    "dev": "VITE_SOME_KEY=123 vite",
     "dev:force": "FORCE_FETCH_I18N=true vite",
     "build": "rm -rf dist && vite build",
     "report": "rm -rf dist && REPORT=true vite build",

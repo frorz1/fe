@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
 import IMAGE_RIVER from '@/assets/images/river.jpeg'
-import { query } from '@/utils'
 import { usePage1Store } from '@/store'
+import Config from '@/config'
 import styles from './index.module.less'
 
 const Page1: FC = () => {
-  console.log(query.search())
+  console.log(Config, import.meta.env.VITE_ENV)
   const { count, addCount } = usePage1Store((state) => state)
   return (
     <div className={styles.page1}>

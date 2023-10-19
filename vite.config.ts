@@ -12,6 +12,7 @@ export default defineConfig(({ command }) => {
   return {
     // 这么做是为了让本地环境打开时没有 src/pages, 当部署到测试环境打开时和本地的路径相同
     // 测试环境可以配置nginx, 将  xxxx-domain 下的 /h5/page1 转发到 dist/page1
+    // 需要注意的是，.env文件中的环境变量加载是基于root目录的，所以也需要放到root下
     root: 'src/pages',
     base,
     resolve: {
