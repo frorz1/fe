@@ -46,12 +46,27 @@ export default defineConfig(({ command }) => {
         // XXX: input部分可以开发vite插件完成自动生成html模版和读取目录结构生成rollupOptions.input
         input: {
           page1: path.resolve(__dirname, 'src/pages/page1/index.html'),
-          // page3: path.resolve(__dirname, 'src/pages/page1/page1-1/index.html'),
+          // 输出到dist目录时，也是assets/page1/page1-1.xxxx.js
+          'page1-1': path.resolve(
+            __dirname,
+            'src/pages/page1/page1-1/index.html',
+          ),
           // page2: path.resolve(__dirname, 'src/pages/page2/index.html'),
-          // ske: path.resolve(__dirname, 'src/ske/test.tsx'),
-          ske: path.resolve(__dirname, 'src/ske/jsSke.ts'),
+          // ske: path.resolve(__dirname, 'src/ske/page1/react-ske/index.tsx'),
+          'skeleton/test': path.resolve(
+            __dirname,
+            'src/ske/page1/js-ske/js-test.ts',
+          ),
         },
         output: {
+          // entryFileNames(chunkInfo) {
+          //   console.log(chunkInfo.name)
+          //   if (/skeleton/.test(chunkInfo.name)) {
+          //     return 'static/js/skeleton.js'
+          //   } else {
+          //     return '[name].js'
+          //   }
+          // },
           // chunkFileNames: 'static/js/[name]-[hash].js',
           // entryFileNames: 'static/js/[name]-[hash].js',
           // assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
@@ -66,17 +81,17 @@ export default defineConfig(({ command }) => {
     plugins: [
       // mpa({}),
       react(),
-      // legacy({
-      //   targets: {
-      //     chrome: '49',
-      //     firefox: '64',
-      //     safari: '10',
-      //     edge: '13',
-      //     ios: '10',
-      //   },
-      //   // 如果有ie需求
-      //   additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
-      // }),
+      legacy({
+        targets: {
+          chrome: '49',
+          firefox: '64',
+          safari: '10',
+          edge: '13',
+          ios: '10',
+        },
+        // 如果有ie需求
+        additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
+      }),
       // TODO: analyzer文件应该生成到一个.useless文件夹里，用gitigonre忽略
       process.env.REPORT
         ? visualizer({
