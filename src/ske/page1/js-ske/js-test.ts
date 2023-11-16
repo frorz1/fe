@@ -167,5 +167,3 @@ render(() => {
   })
   document.querySelector('#ske')?.appendChild(container)
 })
-
-export default render

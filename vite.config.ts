@@ -46,7 +46,7 @@ export default defineConfig(({ command }) => {
         // XXX: input部分可以开发vite插件完成自动生成html模版和读取目录结构生成rollupOptions.input
         input: {
           page1: path.resolve(__dirname, 'src/pages/page1/index.html'),
-          // 输出到dist目录时，也是assets/page1/page1-1.xxxx.js
+          // 如果input的key是 page1/page1-1，那么输出到dist目录时，也是assets/page1/page1-1.xxxx.js
           'page1-1': path.resolve(
             __dirname,
             'src/pages/page1/page1-1/index.html',

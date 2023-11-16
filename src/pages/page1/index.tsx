@@ -3,25 +3,20 @@ import IMAGE_RIVER from '@/assets/images/river.jpeg'
 import { usePage1Store } from '@/store'
 import Config from '@/config'
 import ReactSke from '@/ske/page1/react-ske/react-test'
-import JSSke from '@/ske/page1/js-ske/js-test'
+import '@/ske/page1/js-ske/js-test'
+import { query } from '@/utils'
 import styles from './index.module.less'
 
-if (import.meta.env.DEV) {
-  JSSke()
-}
-
 const Page1: FC = () => {
+  console.log(query.search())
   console.log(Config, import.meta.env.VITE_ENV)
   const { count, addCount } = usePage1Store((state) => state)
-  const [loading, setLoading] = useState(true)
   useEffect(() => {
     setTimeout(() => {
-      // const event = new CustomEvent('ske', {
-      //   hazcheeseburger: true,
-      // })
-      // window.dispatchEvent(event)
-      document.body.removeChild(document.querySelector('#ske'))
-      // setLoading(false)
+      const skeRoot = document.querySelector('#ske')
+      if (skeRoot) {
+        skeRoot.remove()
+      }
     }, 3000)
   }, [])
   return (
